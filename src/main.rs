@@ -48,10 +48,12 @@ fn main() {
     let sigma = cli.sigma;
 
     println!(
-        "dim: {}, radius: {}, n: {}, m: {}, times: {}, port: {}, sigma: {}",
+        "dim: {}, radius: {}, n:{} {}, m:{} {}, times: {}, port: {}, sigma: {}",
         dim,
         radius,
+        n,
         2usize.pow(n as u32),
+        m,
         2usize.pow(m as u32),
         times,
         port,
