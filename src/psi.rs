@@ -191,17 +191,31 @@ impl Receiver {
 
         let n: u64 = num_item * window as u64; // 计算输出的大小
 
-        for _ in 0..dim {
-            let mut pair: Vec<(Scalar, Scalar)> = Vec::with_capacity(n as usize); // 为每一维度初始化一个空的预处理数据
+        let tem: Scalar = Scalar::random(&mut rng); // 随机生成数据
+        let tem_sk = tem * sk; // 将数据和数据乘以私钥存入配对中
 
-            for _ in 0..n {
-                let tem: Scalar = Scalar::random(&mut rng); // 随机生成数据
-                pair.push((tem, tem * sk)); // 将数据和数据乘以私钥存入配对中
-            }
-            _pre_data.push(pair); // 将每一维度的预处理数据加入 _pre_data
+        let mut pair: Vec<(Scalar, Scalar)> = Vec::with_capacity(n as usize); // 为每一维度初始化一个空的预处理数据
+
+        for _ in 0..n {
+            // let tem: Scalar = Scalar::random(&mut rng); // 随机生成数据
+            // pair.push((tem, tem * sk)); // 将数据和数据乘以私钥存入配对中
+            pair.push((tem, tem_sk));
+        }
+
+        for _ in 0..dim {
+            // let mut pair: Vec<(Scalar, Scalar)> = Vec::with_capacity(n as usize); // 为每一维度初始化一个空的预处理数据
+
+            // for _ in 0..n {
+            //     // let tem: Scalar = Scalar::random(&mut rng); // 随机生成数据
+            //     // pair.push((tem, tem * sk)); // 将数据和数据乘以私钥存入配对中
+            //     pair.push((tem, tem_sk));
+            // }
+            _pre_data.push(pair.clone()); // 将每一维度的预处理数据加入 _pre_data
 
             _okvsgen.push(okvs::OkvsGen::new(n)); // 为每一维度初始化 okvs 生成器
         }
+
+        // println!("recv init end");
 
         return Receiver {
             dim,
@@ -342,6 +356,8 @@ impl Sender {
             // _coins.0=a,_coins.1=a*pk,_coins.2=b
             _coins.push((&a * RISTRETTO_BASEPOINT_TABLE, a * pk_rec, b)); // 将coin添加到向量中
         }
+
+        // println!("sender init end");
 
         return Sender {
             // 返回 Sender 实例

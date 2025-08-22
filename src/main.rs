@@ -63,8 +63,8 @@ fn main() {
     lin_low(
         dim,
         radius,
-        2usize.pow(m as u32),
         2usize.pow(n as u32),
+        2usize.pow(m as u32),
         times,
         port,
         sigma,

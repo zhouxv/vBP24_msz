@@ -1,12 +1,11 @@
 FROM ubuntu:22.04
 
+RUN apt-get update
+RUN apt-get install -y net-tools iproute2 python3 python3-pip
+RUN pip install tcconfig
+RUN apt-get install -y build-essential curl
 
 WORKDIR /home
-
-
-RUN apt-get update && \
-    apt-get install -y build-essential curl python3 python3-pip iproute2 net-tools && \
-    pip install tcconfig
 
 RUN export RUSTUP_DIST_SERVER=https://mirrors.ustc.edu.cn/rust-static && \
     export RUSTUP_UPDATE_ROOT=https://mirrors.ustc.edu.cn/rust-static/rustup && \

@@ -42,6 +42,7 @@ pub fn run_standard(
     let now = Instant::now();
 
     let msg1 = psi_rec.inf_msg_apart(&data_r); // 获取 Lin 消息
+
     let msg1_com = bincode::serialize(&msg1).unwrap();
     let msg1_com_len = msg1_com.len();
 

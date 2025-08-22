@@ -1,6 +1,8 @@
 ## build img
 
 sudo docker build -t vbp24_upsi:latest .
+docker tag vbp24_upsi:latest blueobsidian/vbp24_upsi:latest
+docker push blueobsidian/vbp24_upsi:latest
 
 ## run container
 
