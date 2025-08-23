@@ -8,10 +8,10 @@ ds=(2 6)
 
 
 # 循环执行
-for n in "${ns[@]}"; do
-  for m in "${ms[@]}"; do
-    for r in "${rs[@]}"; do
-        for d in "${ds[@]}"; do
+for d in "${ds[@]}"; do
+  for n in "${ns[@]}"; do
+    for m in "${ms[@]}"; do
+      for r in "${rs[@]}"; do
         ./vBP24_ufpsi -n $n -m $m -d $d -r $r 
         echo   # 输出空行
       done
@@ -20,9 +20,9 @@ for n in "${ns[@]}"; do
 done
 
 # 循环执行
-for n in "${ns[@]}"; do
-  for m in "${ms[@]}"; do
-    for d in "${ds[@]}"; do
+for d in "${ds[@]}"; do
+  for n in "${ns[@]}"; do
+    for m in "${ms[@]}"; do
       for r in "${rs[@]}"; do
         ./vBP24_ufpsi -n $n -m $m -d $d -r $r -s
         echo   # 输出空行

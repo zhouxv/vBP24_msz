@@ -21,3 +21,7 @@ tcset lo --rate 10Mbps --delay 80ms --overwrite # Set bandwidth to 100Mbps and a
 tcshow lo                                        # Display current traffic control settings for the loopback interface
 tcdel lo -a                                      # Remove all traffic control rules from the loopback interface
 ```
+
+```
+nohup ./run_bench.sh > vbp24_100Mbps.log 2>&1 &
+```

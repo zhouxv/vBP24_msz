@@ -344,7 +344,7 @@ impl Sender {
         let window: usize = if apart == true { 1 } else { blk_cells }; // 根据 apart 参数设置窗口大小
         let m = num_item * window as u64; // 计算消息数量
         let mut rng = rand::thread_rng(); // 创建随机数生成器
-        let pk = pk_rec; // 设置公钥
+        let pk: RistrettoPoint = pk_rec; // 设置公钥
         let mut _coins: Vec<(RistrettoPoint, RistrettoPoint, Scalar)> =
             Vec::with_capacity(m as usize); // 初始化coin向量
 
